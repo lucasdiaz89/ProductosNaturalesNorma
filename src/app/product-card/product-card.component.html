@@ -1,0 +1,72 @@
+
+<div class="rounded-xl shadow-lg overflow-hidden transition transform hover:scale-105 bg-white flex flex-col max-w-sm">
+  <div class="relative">
+    <button
+      (click)="toggleFavorite()"
+      class="absolute top-2 right-2 text-red-500 hover:text-red-600 text-xl z-10"
+      [attr.aria-label]="isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+    >
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    [attr.fill]="isFavorite ? 'red' : 'none'"
+    viewBox="0 0 24 24"
+    stroke="red"
+    stroke-width="2"
+    class="w-6 h-6"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 4.01 13.5 5.09C14.09 4.01 15.76 3 17.5 3C20.58 3 23 5.42 23 8.5C23 13.5 15 21 15 21H12Z"
+    />
+  </svg>
+
+  </button>
+    <img [src]="product.image" alt="{{ product.cod_prod }}" class="w-full h-48 object-contain bg-gray-50 p-4">
+  </div>
+  <div class="p-4 flex flex-col flex-grow">
+    <!-- Etiqueta -->
+    <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full w-fit mb-2">{{nameCategory}}</span>
+
+    <!-- Título -->
+    <h2 class="text-xl font-bold mb-1 text-gray-800">{{ product.title }}</h2>
+
+    <!-- Descripción -->
+    <p class="text-sm text-gray-600 mb-3">{{ product.description }}</p>
+
+    <!-- Precio -->
+    <p class="text-green-700 font-bold text-lg mb-3">${{ product.price }}</p>
+
+    <!-- Selector de cantidad -->
+    <div class="flex items-center gap-4 mb-4">
+      <button
+        (click)="updateQuantity(-1)"
+        [disabled]="!(product.price > 0)"
+        class="bg-red-500 disabled:bg-red-300 disabled:cursor-not-allowed text-white font-bold w-10 h-10 rounded-full shadow-md hover:bg-red-600 transition-all duration-300 transform hover:scale-110">
+        -
+      </button>
+
+      <span class="text-lg font-semibold w-6 text-center">{{ quantity }}</span>
+
+      <button
+        (click)="updateQuantity(1)"
+        [disabled]="!(product.price > 0)"
+        class="bg-green-500 disabled:bg-green-300 disabled:cursor-not-allowed text-white font-bold w-10 h-10 rounded-full shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-110">
+        +
+      </button>
+    </div>
+
+    <!-- Botón agregar al carrito -->
+    <button
+      *ngIf="product.price > 0"
+      (click)="addToCart()"
+      class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition">
+      + Agregar al carrito
+    </button>
+
+    <!-- Sin stock -->
+    <div *ngIf="product.price <= 0" class="flex flex-col items-center justify-center mt-8">
+      <p class="text-xl font-bold text-gray-800">¡Lo sentimos!</p>
+      <p class="text-lg text-gray-600">Actualmente estamos sin stock.</p>
+    </div>
+  </div>
+</div>

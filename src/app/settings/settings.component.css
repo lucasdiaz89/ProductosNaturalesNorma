@@ -1,0 +1,149 @@
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --border-radius: 6px;
+  --spacing: 1rem;
+  --font-family: 'Segoe UI', sans-serif;
+}
+
+.settings-container {
+  max-width: 800px;
+  margin: auto;
+  padding: var(--spacing);
+  font-family: var(--font-family);
+}
+
+.product-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.product-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.product-list li:hover {
+  background-color: #f9f9f9;
+}
+
+.form-container {
+  background: #ce0707;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: var(--spacing);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+}
+
+button.cancel {
+  background-color: #ccc;
+  color: #333;
+}
+
+button.cancel:hover {
+  background-color: #bbb;
+}
+
+/* 🔐 Estilo para pantalla de acceso denegado */
+.not-allowed-screen {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('https://source.unsplash.com/1600x900/?technology,security') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family);
+}
+
+.not-allowed-content {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem 4rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.not-allowed-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.not-allowed-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.not-allowed-content button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.not-allowed-content button:hover {
+  background-color: var(--primary-hover);
+}

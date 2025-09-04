@@ -1,0 +1,63 @@
+<div class="categories-section px-4 py-8 bg-[#E8E3D7]">
+  <div class="max-w-7xl mx-auto text-center mb-8">
+
+<h2 class="text-3xl font-bold text-green-700">Revisión del Pedido</h2>
+    <p class="text-gray-700 text-lg mt-2">
+      Antes de realizar tu solicitud, revisá los productos que agregaste al carrito. Podés ajustar las cantidades o eliminar artículos si es necesario. 🛒
+    </p>
+
+  </div>
+
+<div *ngIf="cartItems.length > 0; else emptyCart" class="space-y-4">
+  <div *ngFor="let item of cartItems; let i = index"  class="cart-item">
+    <img  [src]="item.image" alt="{{ item.title }}">
+    <div class="item-details">
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.description }}</p>
+      <p class="text-green-700 font-bold">${{ item.price }}</p>
+      <div class="flex items-center gap-4 mb-4">
+        <button
+        (click)="updateItemQuantity(item,-1)"
+        class="bg-red-500 disabled:bg-red-300 disabled:cursor-not-allowed text-white font-bold w-10 h-10 rounded-full shadow-md hover:bg-red-600 transition-all duration-300 transform hover:scale-110">
+        -
+      </button>
+        <span class="text-lg font-semibold w-6 text-center">{{ item.quantity }}</span>
+
+      <button
+        (click)="updateItemQuantity(item,+1)"
+        class="bg-green-500 disabled:bg-green-300 disabled:cursor-not-allowed text-white font-bold w-10 h-10 rounded-full shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-110">
+        +
+      </button>
+      </div>
+    </div>
+    <button (click)="removeFromCart(item.id)" class="remove-btn">
+      Quitar
+    </button>
+  </div>
+
+  <div class="cart-total">Total: ${{ total }}</div>
+
+
+
+<div class="cart-actions flex flex-col sm:flex-row sm:justify-end sm:items-center gap-4 mt-4">
+  <button
+    (click)="hacerPedido()"
+    class="flex justify-center items-center gap-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-center w-full sm:w-auto"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.4 0 .02 5.38.02 12.02c0 2.12.56 4.19 1.63 6.01L0 24l6.17-1.61a11.96 11.96 0 0 0 5.87 1.5h.01c6.63 0 12.01-5.38 12.01-12.02 0-3.21-1.25-6.22-3.54-8.39zM12.04 22c-1.8 0-3.56-.48-5.1-1.39l-.37-.22-3.66.96.98-3.57-.24-.37a9.96 9.96 0 0 1-1.53-5.39c0-5.52 4.49-10.01 10.01-10.01 2.67 0 5.18 1.04 7.07 2.93a9.93 9.93 0 0 1 2.94 7.07c0 5.52-4.49 10.01-10.01 10.01zm5.48-7.55c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.93 1.17-.17.2-.34.22-.63.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.34.45-.5.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.6-.91-2.2-.24-.58-.49-.5-.66-.5h-.57c-.2 0-.52.07-.8.37s-1.05 1.02-1.05 2.5 1.08 2.9 1.23 3.1c.15.2 2.13 3.25 5.17 4.56.72.31 1.28.5 1.72.64.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+    Hacer pedido
+  </button>
+
+
+    <button (click)="clearCart()" class="bg-gray-600 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
+      Vaciar carrito
+    </button>
+</div>
+
+</div>
+
+<ng-template #emptyCart>
+  <div class="text-center text-xl text-gray-500 mt-8">Tu carrito está vacío.</div>
+</ng-template>

@@ -1,0 +1,12 @@
+<div class="category-card">
+  <img class="category-image" [src]="category.imageURL" alt="Imagen de categoría" />
+
+  <div class="card-header">
+    <h3 class="category-title">{{ category.title }}</h3>
+    <span class="product-count">{{category.cantidadProd}} productos</span>
+  </div>
+
+  <p class="category-description">{{ category.description }}</p>
+
+  <button class="browse-btn">VER {{ category.title }}</button>
+</div>

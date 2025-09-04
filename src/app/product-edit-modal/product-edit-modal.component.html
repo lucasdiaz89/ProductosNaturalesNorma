@@ -1,0 +1,53 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <h3>Editando: {{ product.title }}</h3>
+
+    <form (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input id="id" [(ngModel)]="product.id" name="id" disabled="true" />
+      </div>
+
+      <div class="form-group">
+        <label for="cod_prod">Id</label>
+        <input id="cod_prod" [(ngModel)]="product.cod_prod" name="cod_prod" disabled="true" />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input id="title" [(ngModel)]="product.title" name="title" />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <textarea id="description" [(ngModel)]="product.description" name="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input id="price" type="number" [(ngModel)]="product.price" name="price" />
+      </div>
+
+
+      <div class="form-group">
+        <label for="feature">Más vendido</label>
+        <label class="switch">
+          <input
+            type="checkbox"
+            id="feature"
+            [(ngModel)]="product.feature"
+            name="feature"
+          />
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+
+
+      <div class="form-actions">
+        <button type="submit">💾 Guardar</button>
+        <button type="button" class="cancel" (click)="onCancel()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

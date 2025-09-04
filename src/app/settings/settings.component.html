@@ -1,0 +1,40 @@
+
+<div class="settings-container" *ngIf="isLoggedIn; else notLoggedIn">
+
+  <h2>🛠️ Configuración de Productos</h2>
+
+  <input
+    type="text"
+    class="search-input"
+    placeholder="🔍 Buscar producto..."
+    [(ngModel)]="searchTerm"
+    />
+
+  <ul class="product-list">
+    <li *ngFor="let prod of productos" (click)="selectProduct(prod)">
+      <strong>{{ prod.title }}</strong>
+      <span>{{ prod.price | currency:'$' }}</span>
+    </li>
+  </ul>
+
+<app-product-edit-modal
+  *ngIf="selectedProduct"
+  [product]="selectedProduct"
+  (save)="saveChanges($event)"
+  (cancel)="selectedProduct = null">
+</app-product-edit-modal>
+
+</div>
+
+
+<ng-template #notLoggedIn>
+  <div class="not-allowed-screen">
+    <div class="not-allowed-content">
+      <h1>🔐 Acceso denegado</h1>
+      <p>Debes iniciar sesión para acceder a la configuración de productos.</p>
+    </div>
+  </div>
+</ng-template>
+
+
+

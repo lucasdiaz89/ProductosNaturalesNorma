@@ -1,0 +1,32 @@
+<div class="products-section px-4 py-8 bg-[#F5F5F5]">
+  <div class="max-w-7xl mx-auto text-center mb-8">
+    <h2 class="text-3xl font-bold text-green-700">Nuestros Productos</h2>
+    <p class="text-gray-700 text-lg mt-2">
+      Más de 500 productos naturales y orgánicos para vos. Usá el buscador para encontrar lo que necesitás. 🌱🔍
+    </p>
+
+    <div class="mt-6 max-w-md mx-auto">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange()"
+        placeholder="Buscar productos..."
+        class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="products.length > 0; else noResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let product of products">
+      <app-product-card
+        [product]="product">
+      </app-product-card>
+    </div>
+  </div>
+
+  <ng-template #noResults>
+    <div class="text-center text-gray-500 mt-8">
+      No se encontraron productos que coincidan con tu búsqueda.
+    </div>
+  </ng-template>
+</div>

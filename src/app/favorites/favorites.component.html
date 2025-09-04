@@ -1,0 +1,40 @@
+<div class="max-w-7xl mx-auto text-center mb-8">
+  <h2 class="text-3xl font-bold text-green-700">Tus Favoritos</h2>
+  <p class="text-gray-700 text-lg mt-2">
+    Estos son los productos que marcaste como favoritos ❤️. Podés agregarlos al carrito cuando estés listo para hacer tu pedido, o seguir explorando para encontrar más opciones que te gusten.
+  </p>
+
+  <div *ngIf="favorites.length > 0; else noFavorites" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+    <div *ngFor="let product of favorites" class="rounded-xl shadow-lg overflow-hidden bg-white flex flex-col max-w-sm">
+      <img [src]="product.image" alt="{{ product.cod_prod }}" class="w-full h-48 object-contain bg-gray-50 p-4" />
+
+      <div class="p-4 flex flex-col flex-grow">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">{{ product.title }}</h3>
+        <p class="text-sm text-gray-600 mb-2">{{ product.description }}</p>
+        <p class="text-green-700 font-bold text-lg mb-4">${{ product.price }}</p>
+
+        <div class="flex gap-2 mt-auto">
+          <button
+            (click)="addToCart(product)"
+            class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition w-full"
+          >
+            + Agregar al carrito
+          </button>
+          <button
+            (click)="removeFromFavorites(product.id)"
+            class="bg-red-100 hover:bg-red-200 text-red-600 font-bold py-2 px-4 rounded-lg transition"
+            title="Quitar de favoritos"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noFavorites>
+    <p class="text-gray-500 text-lg mt-6">
+      Aún no agregaste productos a tus favoritos. Tocá el ícono del corazón en los productos que te interesen para guardarlos acá y tenerlos siempre a mano.
+    </p>
+  </ng-template>
+</div>

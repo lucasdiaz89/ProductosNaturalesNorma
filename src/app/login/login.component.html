@@ -1,0 +1,7 @@
+
+<form (ngSubmit)="login()">
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+  <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required />
+  <button type="submit" [disabled]="loading">Iniciar sesión</button>
+  <p *ngIf="error">{{ error }}</p>
+</form>

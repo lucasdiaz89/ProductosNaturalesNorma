@@ -1,0 +1,46 @@
+.category-card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .category-image {
+    height: 5rem;
+    width: 5rem;
+    object-fit: contain;
+    margin-bottom: 1rem;
+  }
+
+  .category-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #6b8e23;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-description {
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+
+  .browse-btn {
+    background-color: #6b8e23;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #556b2f;
+    }
+  }
+}
