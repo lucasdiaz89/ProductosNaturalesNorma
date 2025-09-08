@@ -23,7 +23,7 @@ password = '';
   showLoginModal = false;
 
 
-  logoUrl='https://qporfxmzivhzjowtxhdy.supabase.co/storage/v1/object/sign/logo/logProd.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zYWJhYzU5ZC04Yjc0LTQ3OTMtYTY0MS04MDc2YTdmOTI2N2QiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL2xvZ1Byb2QucG5nIiwiaWF0IjoxNzUzMzc4Mzk5LCJleHAiOjEwODEzMTczNjc5OX0.aFrfu62tUET8oDQlJRGf6ANgsQnhnT_3_SELHkyw814';
+  logoUrl='https://qporfxmzivhzjowtxhdy.supabase.co/storage/v1/object/sign/logo/logProd.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yOTRjZGQ1Yi0wYmI1LTRmMTktYjM2ZC1kZmM4YjcxM2Y3M2MiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJsb2dvL2xvZ1Byb2QucG5nIiwiaWF0IjoxNzU3MzM4ODk4LCJleHAiOjEyMzk2MDMwMDk4fQ.2OLAQJdwBksT-xq1sNl2bLfkDLftZlr9F0f5DPKze9Y'
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }

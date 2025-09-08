@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { SupabaseService } from '../services/supabase.service';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms'
   styleUrl: './page-products.component.css'
 })
 export class PageProductsComponent {
-
+  isLoading = false;
 searchTerm: string = '';
   products: any[] = [];
   private searchSubject = new Subject<string>();
@@ -21,21 +21,14 @@ searchTerm: string = '';
     this.searchSubject.pipe(
       debounceTime(300),
       distinctUntilChanged()
-    ).subscribe(term => {
+    ).subscribe(async term => {
       if (term.length >= 3) {
-
-
-this.supabaseService.searchProducts(term).subscribe(response => {
-  if (response.error) {
-    console.error('Error al buscar productos:', response.error.message);
-    this.products = [];
-  } else {
-    this.products = response.data || [];
-  }
-  });
-
-  }
-});
+        this.isLoading=true;
+        const productos = await this.supabaseService.searchProducts(term);
+        this.products = productos;
+        this.isLoading=false;
+      }
+    });
   }
 
   onSearchChange(): void {

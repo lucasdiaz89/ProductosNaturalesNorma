@@ -73,7 +73,7 @@ calculateTotal(): void {
   mensaje += '\n¿Está disponible para entrega?';
 
   const mensajeCodificado = encodeURIComponent(mensaje);
-  const numeroWhatsApp = '5493512263396';
+  const numeroWhatsApp = '5493541337754';
   const url = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
 
   window.open(url, '_blank');

@@ -31,15 +31,10 @@ export class HomeComponent implements OnInit {
     this.loadProductsFavorites();
   }
 
-  loadProductsFeature(): void {
-  this.supabaseService.getProductosFeature().subscribe({
-    next: data => {
-      this.products = data.data;
-    },
-    error: error => {
-      console.error('Error al obtener productos:', error);
-    }
-  });
+  async loadProductsFeature() {
+    const productos = await this.supabaseService.getProductosFeature();
+    this.products = productos;
+
   }
   loadProductsFavorites(): void {
   this.favorites = this.cartService.getFavorites();

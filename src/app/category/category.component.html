@@ -1,19 +1,17 @@
-<div *ngIf="categories.length > 0;" class="categories-section px-4 py-8 bg-[#E8E3D7]">
+<div *ngIf="isLoading" class="flex justify-center items-center py-8">
+  <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-green-600 border-opacity-50"></div>
+  <span class="ml-4 text-green-700 font-medium">Cargando categorias...</span>
+</div>
+
+<div *ngIf="!isLoading" class="categories-section px-4 py-8 bg-[#E8E3D7]">
   <div class="max-w-7xl mx-auto text-center mb-8">
     <h2 class="text-3xl font-bold text-green-700">Descubrí lo Natural</h2>
     <p class="text-gray-700 text-lg mt-2">
       Sumergite en nuestras categorías exclusivas de productos naturales y orgánicos. Seleccionados con cuidado para vos, pensados para tu bienestar. 🌿✨
     </p>
   </div>
-
-<!-- Loading -->
-<div *ngIf="isLoading" class="flex justify-center items-center py-8">
-  <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-green-600 border-opacity-50"></div>
-  <span class="ml-4 text-green-700 font-medium">Cargando categorias...</span>
-</div>
-
 <!-- Productos -->
-<div *ngIf="!isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
 
     <div *ngFor="let categ of categories" (click)="goToProducts(categ.id)">
       <app-card-category

@@ -15,7 +15,10 @@
       />
     </div>
   </div>
-
+  <div *ngIf="isLoading" class="flex justify-center items-center py-8">
+  <div class="animate-spin rounded-full h-10 w-10 border-t-4 border-green-600 border-opacity-50"></div>
+  <span class="ml-4 text-green-700 font-medium">Cargando productos...</span>
+</div>
   <div *ngIf="products.length > 0; else noResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <div *ngFor="let product of products">
       <app-product-card
